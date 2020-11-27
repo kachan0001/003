@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>これなんぼやねん</title>
+    <link rel="stylesheet" href="htts://unpkg.com/ress/dist/ress.min.css">
+
+    <style>
+        body {
+            background-image: url(images/bg4.jpg), linear-gradient(#bb5535, #349bba, #5334ba);
+            background-blend-mode: multiply;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+
+        div {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        input {
+            margin-top: 7px;
+            width: 60px;
+
+        }
+
+        .btn {
+            width: 50px;
+        }
+
+        .rad {
+            width: 15px;
+        }
+
+        .rad1 {
+            width: 15px;
+        }
+    </style>
+    <script>
+        function fncWARIBIKI() {
+            let syubetu; //ラジオボタン入力値
+            let price; //金額
+            let excluding_tax;
+            w = document.waribikikeisan.syubetu.value;
+            p = document.waribikikeisan.price.value;
+            if (w == "zeinuki") {
+                excluding_tax = p;
+            } else if (w == "zeikomi") {
+                excluding_tax = p / 1.1;
+            } else {
+                alert('税引か税抜を選択してください');
+                return;
+            }
+
+            document.waribikikeisan.itiwari.value = Math.round(excluding_tax * 0.9 * 1.1);
+            document.waribikikeisan.niwari.value = Math.round(excluding_tax * 0.8 * 1.1);
+            document.waribikikeisan.sanwari.value = Math.round(excluding_tax * 0.7 * 1.1);
+            document.waribikikeisan.yonwari.value = Math.round(excluding_tax * 0.6 * 1.1);
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <img src="images/logo2.png" alt="KATUYA YAMAMORI">
+    </header>
+    <div>
+        <h2>これなんぼやねん？</h2>
+        <form name="waribikikeisan">
+            <p>
+                レジで2割引きて書かれても1000円ならわかるけど1389円の2割引きはすぐわかりません。<br>
+                そんな時すぐ計算できるものがあればいいなと思い作りました。
+            </p>
+            税抜：<input type="radio" class="rad1" name="syubetu" value="zeinuki" />
+            税込：<input type="radio" class="rad" name="syubetu" value="zeikomi" /><br>
+            金額：<input type="text" name="price">円<br>
+            <input type="button" class="btn" value="計算" onclick="fncWARIBIKI()"><br>
+            <h3>計算結果</h3>
+            1割引：<input type="text" name="itiwari">円<br>
+            2割引：<input type="text" name="niwari">円<br>
+            3割引：<input type="text" name="sanwari">円<br>
+            4割引：<input type="text" name="yonwari">円<br>
+
+        </form>
+    </div>
+</body>
+
+</html>

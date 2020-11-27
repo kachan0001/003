@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 6em;
+            text-align: center;
+        }
+
+        #count {
+            margin: 0;
+            font-weight: bold;
+            color: #888;
+        }
+
+        #wrap {
+            margin-top: 20px;
+            padding: 20px 10px;
+            background-color: #666;
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="count">60</p>
+    <div id="wrap">
+        <p id="text"></p>
+    </div>
+    <button id="start">スタート</button>
+    <script>
+        const wrap = document.getElementById('wrap');
+        const start = document.getElementById('start');
+
+        const textLists = [
+            'Hello World', 'This is my App', 'How are you?',
+            'Today is sunny', 'I love JavaScript!', 'Good morning',
+            'I am Japanese', 'Let it be', 'Samurai',
+            'Typing Game', 'Information Technology',
+            'I want to be a programmer', 'What day is today?',
+            'I want to build a web app', 'Nice to meet you',
+            'Chrome Firefox Edge Safari', 'machine learning',
+            'Brendan Eich', 'John Resig', 'React Vue Angular',
+            'Netscape Communications', 'undefined null NaN',
+            'Thank you very much', 'Google Apple Facebook Amazon',
+            'ECMAScript', 'console.log', 'for while if switch',
+            'var let const', 'Windows Mac Linux iOS Android',
+            'programming'
+        ];
+
+
+        const createText = () => {
+            const p = document.getElementById('text');
+            const rnd = Math.floor(Math.random() * textLists.length);
+
+            p.textContent = '';
+
+            textLists[rnd].split('').map(value => {
+                const span = document.createElement('span');
+
+                span.textContent = value;
+                p.appendChild(span);
+            })
+
+        };
+
+
+        const keyDown = e => {}; // キーイベント＆入力判定処理
+
+        const rankCheck = rank => {}; // ランク判定とメッセージ生成処理
+
+        const gameOver = id => {}; // ゲームの終了処理
+
+        const timer = () => {}; // タイマー処理
+
+
+        start.addEventListener('click', () => {
+            createText();
+        })
+    </script>
+</body>
+
+</html>

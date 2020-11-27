@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タイピングトレーニングアプリ</title>
+    <style>
+        body {
+            font-size: 6em;
+            text-align: center;
+        }
+
+        #count {
+            margin: 0;
+            font-weight: bold;
+            color: #888;
+        }
+
+        #wrap {
+            margin-top: 20px;
+            padding: 20px 10px;
+            background-color: #666;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        span {
+            transition: all 300ms 0s ease;
+        }
+
+        .add-color {
+            font-size: 0.5em;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="count">60</p>
+    <div id="wrap">
+        <p id="text"></p>
+    </div>
+    <button id="start">スタート</button>
+    <script>
+        // 必要なHTML要素の取得
+        const wrap = document.getElementById('wrap');
+        const start = document.getElementById('start');
+        const textLists = [
+            'Hello World', 'This is my App', 'How are you?',
+            'Today is sunny', 'I love JavaScript!', 'Good morning',
+            'I am Japanese', 'Let it be', 'Samurai',
+            'Typing Game', 'Information Technology',
+            'I want to be a programmer', 'What day is today?',
+            'I want to build a web app', 'Nice to meet you',
+            'Chrome Firefox Edge Safari', 'machine learning',
+            'Brendan Eich', 'John Resig', 'React Vue Angular',
+            'Netscape Communications', 'undefined null NaN',
+            'Thank you very much', 'Google Apple Facebook Amazon',
+            'ECMAScript', 'console.log', 'for while if switch',
+            'var let const', 'Windows Mac Linux iOS Android',
+            'programming'
+
+
+        ]; // 複数のテキストを格納する配列
+        let checkText = [];
+        const createText = () => {
+            const p = document.getElementById('text');
+
+
+            const rnd = Math.floor(Math.random() * textLists.length); // 配列のインデックス数からランダムな数値を生成する
+
+
+            p.textContent = ''; // p要素の中身を空っぽにする
+
+
+            p.textContent = textLists[rnd]; // ランダムなテキストをp要素に挿入する
+            // テキストを1文字ずつに分割してp要素に挿入する
+
+            checkText = textLists[rnd].split('').map(value => {
+                const span = document.createElement('span'); // span要素を生成する
+
+
+                span.textContent = value; // span要素に配列の1文字ずつを当てはめる
+
+
+                p.appendChild(span); // span要素をp要素に追加していく
+                p.appendChild(value);
+                return span;
+            })
+
+            // 配列の0番目にあるテキストを画面に表示する
+            p.textContent = textLists[0];
+        }; // ランダムなテキストを画面に表示する
+
+        createText(); // createText関数を実行する
+
+
+        const keyDown = e => {
+                if (e.key === checkTexts[0].textContent) {
+                    // add-colorクラスを付与する
+                    checkTexts[0].className = 'add-color';
+
+                    // 配列から1文字を削除する
+                    checkTexts.shift();
+                    // 最後まで入力したら新しいテキストを用意する
+                    if (!checkTexts.length) createText();
+
+                }; // キーイベント＆入力判定処理
+                const rankCheck = rank => {}; // ランク判定とメッセージ生成処理
+                const gameOver = id => {}; // ゲームの終了処理
+                const timer = () => {}; // タイマー処理
+    </script>
+</body>
+
+</html>

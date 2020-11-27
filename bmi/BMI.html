@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMIと適正体重の計算</title>
+    <link rel="stylesheet" href="htts://unpkg.com/ress/dist/ress.min.css">
+    <style>
+        body {
+            background-image: url(images/bg1.jpg), radial-gradient(#bb5535, #34ba43, #5334ba);
+            background-blend-mode: multiply;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        h2 {
+            font-size: 1.3em;
+        }
+
+        input {
+            width: 50px;
+            margin-top: 7px;
+        }
+
+        div {
+            text-align: center;
+            color: #ffffff;
+        }
+    </style>
+    <script>
+        function fncBMI() {
+            var bmi; //BMI
+            var w; //体重
+            var h; //身長
+            var tekiseiweight; //適正体重
+            var biyouweight; //美容体重
+            var moderuweight; //モデル体重
+
+            w = eval(document.bmi.bmiWeight.value);
+            h = eval(document.bmi.bmiHeight.value) / 100; //メートルに変換
+
+            bmi = Math.round(w / (h * h));
+            tekiseiweight = Math.round(h * h * 22);
+            biyouweight = Math.round(h * h * 20);
+            moderuweight = Math.round(h * h * 18);
+
+            document.bmi.bmiAns.value = bmi;
+            document.bmi.tekiseiweightAns.value = tekiseiweight;
+            document.bmi.biyouweightAns.value = biyouweight;
+            document.bmi.moderuweightAns.value = moderuweight;
+
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <img src="images/logo2.png" alt="KATUYA YAMAMORI">
+    </header>
+    <div>
+        <div>
+            <h2>あなたのBMIと適正体重はいくつ？</h2>
+
+            <form name="bmi">
+                <p>今すぐ計算してみましょう。<br>
+                    『BMI＝体重(kg)÷身長(m)×身長(m)』<br>
+                    適正体重はBMIが22の時の体重。<br>
+                    美容体重はBMIが20の時の体重。<br>
+                    モデル体重はBMIの18に時の体重。
+
+                </p>
+
+                体重：<input type="text" name="bmiWeight">kg<br>
+                身長：<input type="text" name="bmiHeight">cm<br>
+                <input type="button" value="計算" onclick="fncBMI()"><br>
+                <h3>計算結果</h3>
+                BMI：<input type="text" name="bmiAns"><br>
+                適正体重 : <input type="text" name="tekiseiweightAns">㎏<br>
+                美容体重 : <input type="text" name="biyouweightAns">kg<br>
+                モデル体重 : <input type="text" name="moderuweightAns">kg
+
+                <p>
+                    BMIが25以上だと、ちょっと肥満気味かもしれません。<br>BMIが18未満の場合は痩せすぎている可能性があります。<br>
+                    適正体重はBMIが22の時の体重。<br>
+                    美容体重はBMIが20の時の体重。<br>
+                    モデル体重はBMIの18に時の体重。
+
+                </p>
+            </form>
+        </div>
+</body>
+
+</html>
